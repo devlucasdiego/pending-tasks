@@ -1,5 +1,6 @@
 package com.lucas.pendingtasks.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,8 @@ public class PendingTasksService {
 		return obj.orElse(null);
 	}
 
+	public List<PendingTasks> findAllOpen() {
+		List<PendingTasks> list = repository.findAllOpen();
+		return list;
+	}
 }

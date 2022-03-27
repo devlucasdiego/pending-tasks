@@ -1,5 +1,7 @@
 package com.lucas.pendingtasks.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,5 +23,11 @@ public class PendingTasksResource {
 	public ResponseEntity<PendingTasks> findById(@PathVariable Integer Id) {
 		PendingTasks obj = service.findById(Id);
 		return ResponseEntity.ok().body(obj);
+	}
+
+	@GetMapping(value = "/open")
+	public ResponseEntity<List<PendingTasks>> listOpen() {
+		List<PendingTasks> list = service.findAllOpen();
+		return ResponseEntity.ok().body(list);
 	}
 }
