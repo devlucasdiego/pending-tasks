@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lucas.pendingtasks.domain.PendingTasks;
 import com.lucas.pendingtasks.services.PendingTasksService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/tasks")
 public class PendingTasksResource {
@@ -20,8 +22,8 @@ public class PendingTasksResource {
 	private PendingTasksService service;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<PendingTasks> findById(@PathVariable Integer Id) {
-		PendingTasks obj = service.findById(Id);
+	public ResponseEntity<PendingTasks> findById(@PathVariable Integer id) {
+		PendingTasks obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 

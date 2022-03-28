@@ -1,13 +1,15 @@
 package com.lucas.pendingtasks.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class PendingTasks implements Serializable {
@@ -19,14 +21,16 @@ public class PendingTasks implements Serializable {
 	private Integer id;
 	private String titulo;
 	private String descricao;
-	private LocalDateTime dataFinalizar;
+
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date dataFinalizar;
 	private Boolean finalizado = false;
 
 	public PendingTasks() {
 		super();
 	}
 
-	public PendingTasks(Integer id, String titulo, String descricao, LocalDateTime dataFinalizar, Boolean finalizado) {
+	public PendingTasks(Integer id, String titulo, String descricao, Date dataFinalizar, Boolean finalizado) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -59,11 +63,11 @@ public class PendingTasks implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public LocalDateTime getDataFinalizar() {
+	public Date getDataFinalizar() {
 		return dataFinalizar;
 	}
 
-	public void setDataFinalizar(LocalDateTime dataFinalizar) {
+	public void setDataFinalizar(Date dataFinalizar) {
 		this.dataFinalizar = dataFinalizar;
 	}
 
@@ -77,7 +81,10 @@ public class PendingTasks implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override

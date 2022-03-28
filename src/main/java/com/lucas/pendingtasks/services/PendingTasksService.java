@@ -15,8 +15,8 @@ public class PendingTasksService {
 	@Autowired
 	private PendingTasksRepository repository;
 
-	public PendingTasks findById(Integer Id) {
-		Optional<PendingTasks> obj = repository.findById(Id);
+	public PendingTasks findById(Integer id) {
+		Optional<PendingTasks> obj = repository.findById(id);
 		return obj.orElse(null);
 	}
 
