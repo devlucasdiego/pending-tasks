@@ -24,4 +24,9 @@ public class PendingTasksService {
 		List<PendingTasks> list = repository.findAllOpen();
 		return list;
 	}
+
+	public List<PendingTasks> findAllClose() {
+		List<PendingTasks> list = repository.findAllClose();
+		return list;
+	}
 }

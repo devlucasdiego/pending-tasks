@@ -13,4 +13,7 @@ public interface PendingTasksRepository extends JpaRepository<PendingTasks, Inte
 
 	@Query("SELECT obj FROM PendingTasks obj WHERE obj.finalizado = false ORDER BY obj.dataParaFinalizar")
 	List<PendingTasks> findAllOpen();
+
+	@Query("SELECT obj FROM PendingTasks obj WHERE obj.finalizado = true ORDER BY obj.dataParaFinalizar")
+	List<PendingTasks> findAllClose();
 }

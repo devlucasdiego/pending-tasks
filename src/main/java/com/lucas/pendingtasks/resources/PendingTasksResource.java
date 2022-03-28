@@ -30,4 +30,10 @@ public class PendingTasksResource {
 		List<PendingTasks> list = service.findAllOpen();
 		return ResponseEntity.ok().body(list);
 	}
+
+	@GetMapping(value = "/close")
+	public ResponseEntity<List<PendingTasks>> listClose() {
+		List<PendingTasks> list = service.findAllClose();
+		return ResponseEntity.ok().body(list);
+	}
 }
