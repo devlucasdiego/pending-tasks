@@ -36,4 +36,10 @@ public class PendingTasksResource {
 		List<PendingTasks> list = service.findAllClose();
 		return ResponseEntity.ok().body(list);
 	}
+
+	@GetMapping
+	public ResponseEntity<List<PendingTasks>> listAll() {
+		List<PendingTasks> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
 }

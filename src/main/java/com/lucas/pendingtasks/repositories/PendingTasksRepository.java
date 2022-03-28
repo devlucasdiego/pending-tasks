@@ -11,9 +11,9 @@ import com.lucas.pendingtasks.domain.PendingTasks;
 @Repository
 public interface PendingTasksRepository extends JpaRepository<PendingTasks, Integer> {
 
-	@Query("SELECT obj FROM PendingTasks obj WHERE obj.finalizado = false ORDER BY obj.dataParaFinalizar")
+	@Query("SELECT obj FROM PendingTasks obj WHERE obj.finalizado = false ORDER BY obj.dataFinalizar")
 	List<PendingTasks> findAllOpen();
 
-	@Query("SELECT obj FROM PendingTasks obj WHERE obj.finalizado = true ORDER BY obj.dataParaFinalizar")
+	@Query("SELECT obj FROM PendingTasks obj WHERE obj.finalizado = true ORDER BY obj.dataFinalizar")
 	List<PendingTasks> findAllClose();
 }
