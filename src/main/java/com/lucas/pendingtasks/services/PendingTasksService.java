@@ -34,4 +34,9 @@ public class PendingTasksService {
 		List<PendingTasks> list = repository.findAll();
 		return list;
 	}
+
+	public PendingTasks create(PendingTasks obj) {
+		obj.setId(null);
+		return repository.save(obj);
+	}
 }
