@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.lucas.pendingtasks.domain.PendingTasks;
 import com.lucas.pendingtasks.repositories.PendingTasksRepository;
+import com.lucas.pendingtasks.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class PendingTasksService {
@@ -17,7 +18,8 @@ public class PendingTasksService {
 
 	public PendingTasks findById(Integer id) {
 		Optional<PendingTasks> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + PendingTasks.class.getName()));
 	}
 
 	public List<PendingTasks> findAllOpen() {
