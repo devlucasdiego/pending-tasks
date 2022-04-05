@@ -45,4 +45,13 @@ public class PendingTasksService {
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
+
+	public PendingTasks update(Integer id, PendingTasks obj) {
+		PendingTasks newObj = findById(id);
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setDataFinalizar(obj.getDataFinalizar());
+		newObj.setDescricao(obj.getDescricao());
+		newObj.setFinalizado(obj.getFinalizado());
+		return repository.save(newObj);
+	}
 }
